@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+  {% if msg %}
+    <p style="text-align:center;">{{msg}}</p>
+  {% endif %}
+
+<div style="width:60%;margin:0 auto;">
+    <div class="login">
+      <h1>Login</h1>
+      <form action="{% url 'validate' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Enter User Id</label>
+          <input type="text" name="userid" required="true" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label>Enter Password</label>
+          <input type="password" name="password" required="true" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label>Select User Type</label>
+          <select name="usertype" class="form-control">
+            <option value="">-Select-</option>
+            <option value="jobseeker">Job Seeker</option>
+            <option value="employer">Employer</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+        <br/>
+        <input type="submit" value="Login" class="btn btn-info"/>
+      </form>
+
+    </div>
+    <br/>
+  </div>
+{% endblock body %}
